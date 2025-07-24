@@ -40,7 +40,7 @@ const Hero = () => {
             Join Community
           </a>
           <a
-            href="/blogs"
+            href="/write"
             className="border-2 border-orange-300 text-orange-700 px-6 py-3 rounded-xl hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 font-semibold text-center"
           >
             Explore Blogs
