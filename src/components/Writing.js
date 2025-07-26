@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-// Modal for reading full blog
 const BlogModal = ({ blog, isOpen, onClose }) => {
   if (!isOpen || !blog) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-        {/* Modal Header */}
         <div className="bg-gradient-to-r from-orange-600 to-amber-600 text-white p-6 relative">
           <button
             onClick={onClose}
@@ -32,7 +30,6 @@ const BlogModal = ({ blog, isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Modal Content */}
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
           <div className="prose prose-orange max-w-none">
             <div className="text-gray-700 leading-relaxed whitespace-pre-wrap text-base">
@@ -45,7 +42,6 @@ const BlogModal = ({ blog, isOpen, onClose }) => {
   );
 };
 
-// Enhanced Blog Card with read more functionality
 const BlogCard = ({ blog, onReadMore, isCompact = false }) => (
   <div className="bg-white p-5 rounded-lg shadow-md mb-4 border border-orange-200 hover:shadow-lg transition-all duration-200 hover:border-orange-300">
     <h3 className="font-bold text-orange-900 text-lg mb-2 leading-tight line-clamp-2">{blog.title}</h3>
@@ -71,21 +67,18 @@ const BlogCard = ({ blog, onReadMore, isCompact = false }) => (
   </div>
 );
 
-// Blog List Component with pagination and filtering
 const BlogList = ({ blogs, onReadMore }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [authorFilter, setAuthorFilter] = useState('');
   const blogsPerPage = 6;
 
-  // Get unique authors
+
   const authors = [...new Set(blogs.map(blog => blog.name))].sort();
 
-  // Filter blogs by author
   const filteredBlogs = authorFilter
     ? blogs.filter(blog => blog.name === authorFilter)
     : blogs;
 
-  // Paginate blogs
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
@@ -102,7 +95,7 @@ const BlogList = ({ blogs, onReadMore }) => {
           📚 All Blogs ({filteredBlogs.length})
         </h2>
 
-        {/* Author Filter */}
+
         <div className="flex items-center gap-2">
           <label className="text-sm font-medium text-orange-700">Filter by Author:</label>
           <select
@@ -118,7 +111,7 @@ const BlogList = ({ blogs, onReadMore }) => {
         </div>
       </div>
 
-      {/* Blog Grid */}
+
       {currentBlogs.length === 0 ? (
         <div className="text-center py-12">
           <div className="text-6xl mb-4">📝</div>
@@ -134,7 +127,7 @@ const BlogList = ({ blogs, onReadMore }) => {
         </div>
       )}
 
-      {/* Pagination */}
+
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 pt-6 border-t border-orange-200">
           <button
@@ -170,7 +163,7 @@ const BlogWriting = () => {
   const [errors, setErrors] = useState({});
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('write'); // 'write' or 'browse'
+  const [activeTab, setActiveTab] = useState('write');
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -190,7 +183,6 @@ const BlogWriting = () => {
     fetchBlogs();
   }, []);
 
-  // Form input change handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -199,7 +191,6 @@ const BlogWriting = () => {
     }
   };
 
-  // Form validation
   const validateForm = () => {
     const { name, email, title, description } = formData;
     const newErrors = {};
@@ -260,7 +251,6 @@ const BlogWriting = () => {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 pt-20 pb-12 px-4">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-orange-900 mb-4">Welcome To The World Of Words</h1>
           <p className="text-lg text-orange-700 max-w-2xl mx-auto leading-relaxed">
@@ -268,7 +258,6 @@ const BlogWriting = () => {
           </p>
         </div>
 
-        {/* Tab Navigation */}
         <div className="flex justify-center mb-8">
           <div className="bg-white rounded-lg p-1 shadow-md border border-orange-200">
             <button
@@ -294,7 +283,6 @@ const BlogWriting = () => {
 
         {activeTab === 'write' ? (
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left: Features */}
             <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-lg border border-orange-200 h-fit">
               <h2 className="text-xl font-bold text-orange-900 mb-6 flex items-center">
                 ✨ Features
@@ -310,11 +298,9 @@ const BlogWriting = () => {
               </ul>
             </div>
 
-            {/* Center: Blog Form */}
             <div className="w-full lg:w-1/2 bg-white p-8 rounded-xl shadow-lg border border-orange-200">
               <h2 className="text-2xl font-bold text-orange-900 mb-8">✍️ Write Your Blog</h2>
               <div className="space-y-6">
-                {/* Name */}
                 <div>
                   <label className="block text-sm font-semibold text-orange-800 mb-2">Your Name *</label>
                   <input
@@ -328,7 +314,6 @@ const BlogWriting = () => {
                   {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name}</p>}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-orange-800 mb-2">Email *</label>
                   <input
@@ -342,7 +327,6 @@ const BlogWriting = () => {
                   {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
                 </div>
 
-                {/* Title */}
                 <div>
                   <label className="block text-sm font-semibold text-orange-800 mb-2">Blog Title *</label>
                   <input
@@ -356,7 +340,6 @@ const BlogWriting = () => {
                   {errors.title && <p className="text-sm text-red-600 mt-1">{errors.title}</p>}
                 </div>
 
-                {/* Description */}
                 <div>
                   <label className="block text-sm font-semibold text-orange-800 mb-2">Content *</label>
                   <textarea
@@ -370,7 +353,6 @@ const BlogWriting = () => {
                   {errors.description && <p className="text-sm text-red-600 mt-1">{errors.description}</p>}
                 </div>
 
-                {/* Submit */}
                 <button
                   onClick={handleSubmit}
                   className="w-full bg-orange-600 text-white px-6 py-4 rounded-lg hover:bg-orange-700 transition-all font-semibold"
@@ -380,7 +362,6 @@ const BlogWriting = () => {
               </div>
             </div>
 
-            {/* Right: Recent Blogs */}
             <div className="w-full lg:w-1/4 bg-white p-6 rounded-xl shadow-lg border border-orange-200 h-fit">
               <h2 className="text-xl font-bold text-orange-900 mb-6">📰 Recent Blogs ({blogs.slice(0, 5).length})</h2>
               <div className="max-h-96 overflow-y-auto pr-2">
@@ -402,7 +383,6 @@ const BlogWriting = () => {
           <BlogList blogs={blogs} onReadMore={handleReadMore} />
         )}
 
-        {/* Blog Reading Modal */}
         <BlogModal
           blog={selectedBlog}
           isOpen={isModalOpen}

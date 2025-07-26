@@ -5,7 +5,7 @@ const Features = () => {
     {
       title: "Express Yourself",
       description: "Write freely and share your stories, poems, and thoughts with the world.",
-      icon: <path d="M12 20h9" />, // pencil base line
+      icon: <path d="M12 20h9" />,
     },
     {
       title: "Personalized Dashboard",

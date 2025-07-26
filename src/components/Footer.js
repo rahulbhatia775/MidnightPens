@@ -6,7 +6,7 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
           
-          {/* Branding */}
+
           <div>
             <h2 className="text-xl font-bold text-orange-600">MidnightPens</h2>
             <p className="mt-3 text-gray-600">
@@ -14,7 +14,6 @@ function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-orange-500 font-semibold mb-3">Quick Links</h3>
             <ul className="space-y-2">
@@ -25,7 +24,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
           <div>
             <h3 className="text-orange-500 font-semibold mb-3">Support</h3>
             <ul className="space-y-2">
@@ -36,7 +34,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Social Icons */}
           <div>
             <h3 className="text-orange-500 font-semibold mb-3">Connect</h3>
             <div className="flex space-x-6 mt-2 text-orange-500">

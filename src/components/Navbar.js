@@ -12,10 +12,8 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white px-6 py-4 shadow-md fixed top-0 z-50 border-b border-orange-200 flex justify-between items-center">
 
-      {/* Logo */}
       <div className="text-2xl font-bold text-orange-800"><a href="/">MidnightPens</a></div>
 
-      {/* Desktop Menu */}
       <ul className="hidden md:flex items-center space-x-6 text-orange-800 font-medium ml-auto">
         <li><a href="#features" className="hover:text-orange-600">Features</a></li>
         <li><a href="#contact" className="hover:text-orange-600">Contact</a></li>
@@ -29,7 +27,6 @@ export default function Navbar() {
         </li>
       </ul>
 
-      {/* Mobile Button */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         className="md:hidden text-orange-800 text-2xl"
@@ -37,7 +34,6 @@ export default function Navbar() {
         {menuOpen ? '✕' : '☰'}
       </button>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-white border-t border-orange-200 shadow-md py-6 flex flex-col items-center space-y-5 animate-slideDown md:hidden">
           <a href="#features" className="text-orange-800 hover:text-orange-600">Features</a>
@@ -46,7 +42,6 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Slide Animation */}
       <style jsx>{`
         @keyframes slideDown {
           0% {
